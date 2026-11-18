@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mesa de Ayuda · IFTS 18</title>
+  <meta name="description" content="Mesa de ayuda del IFTS 18: abrí un ticket de soporte técnico y seguí su estado.">
+  <link rel="icon" type="image/svg+xml" href="img/logo-ifts18.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- ENCABEZADO: marca + menú de navegación (se vuelve hamburguesa en pantallas chicas) -->
+  <header class="encabezado">
+    <a class="marca" href="#inicio">
+      <img src="img/logo-ifts18.svg" alt="Logo del IFTS 18" width="44" height="40">
+      <span>Mesa de Ayuda <small>IFTS 18</small></span>
+    </a>
+    <button class="menu-boton" id="menuBoton" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#prioridades">Prioridades</a>
+      <a href="#seguimiento">Seguimiento</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- INICIO: presentación + resumen de tickets por estado -->
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-grid">
+        <div class="hero-texto">
+          <h1>¿Algo no funciona? Abrí un ticket y lo resolvemos.</h1>
+          <p class="hero-bajada">La Mesa de Ayuda del IFTS 18 atiende problemas de redes, cuentas, equipos y programas. Cada pedido tiene un número, un responsable y un estado que podés seguir.</p>
+          <div class="botones">
+            <a class="boton boton-primario" href="#contacto">Abrir un ticket</a>
+            <a class="boton" href="#seguimiento">Ver seguimiento</a>
+          </div>
+          <p class="atencion" id="atencion" aria-live="polite"></p>
+        </div>
+        <div class="hero-resumen">
+          <div class="bloques" aria-label="Cantidad de tickets por estado">
+            <div class="bloque est-abierto"><strong data-conteo="Abierto">0</strong><span>Abierto</span></div>
+            <div class="bloque est-en-progreso"><strong data-conteo="En Progreso">0</strong><span>En Progreso</span></div>
+            <div class="bloque est-resuelto"><strong data-conteo="Resuelto">0</strong><span>Resuelto</span></div>
+            <div class="bloque est-cerrado"><strong data-conteo="Cerrado">0</strong><span>Cerrado</span></div>
+          </div>
+          <p class="nota">Incluye los tickets de ejemplo y los que abras desde este sitio.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS: cuatro tarjetas -->
+    <section class="seccion" id="servicios">
+      <div class="contenedor">
+        <h2>Servicios</h2>
+        <p class="intro">Estos son los pedidos que atendemos en aulas, laboratorios y oficinas.</p>
+        <div class="tarjetas">
+          <article class="tarjeta">
+            <h3>Redes y conectividad</h3>
+            <p>Wi-Fi, cableado, switches y acceso a internet.</p>
+          </article>
+          <article class="tarjeta">
+            <h3>Cuentas y accesos</h3>
+            <p>Altas de usuarios, contraseñas olvidadas y permisos en el dominio.</p>
+          </article>
+          <article class="tarjeta">
+            <h3>Equipos y periféricos</h3>
+            <p>Computadoras, impresoras y proyectores: diagnóstico y reparación.</p>
+          </article>
+          <article class="tarjeta">
+            <h3>Programas y licencias</h3>
+            <p>Instalación y actualización de software para las cursadas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIORIDADES: tabla de información estructurada -->
+    <section class="seccion seccion-alt" id="prioridades">
+      <div class="contenedor">
+        <h2>Prioridades y tiempos de respuesta</h2>
+        <p class="intro">La prioridad define qué se atiende primero. Atendemos de lunes a viernes, de 08:00 a 18:00 hs.</p>
+        <div class="tabla-scroll">
+          <table class="tabla">
+            <caption>Tiempo máximo de primera respuesta según la prioridad</caption>
+            <thead>
+              <tr><th scope="col">Prioridad</th><th scope="col">Cuándo se usa</th><th scope="col">Primera respuesta</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row"><span class="insignia prio-critica">Crítica</span></th><td>Un servicio completo está caído y frena clases o administración.</td><td>Hasta 1 hora</td></tr>
+              <tr><th scope="row"><span class="insignia prio-alta">Alta</span></th><td>Afecta a un aula o a un grupo de personas.</td><td>Hasta 4 horas</td></tr>
+              <tr><th scope="row"><span class="insignia prio-media">Media</span></th><td>Afecta a una persona y hay una alternativa.</td><td>Hasta 1 día hábil</td></tr>
+              <tr><th scope="row"><span class="insignia prio-baja">Baja</span></th><td>Consultas, altas y mejoras sin urgencia.</td><td>Hasta 3 días hábiles</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEGUIMIENTO: lista filtrable de tickets (los generados por JavaScript) -->
+    <section class="seccion" id="seguimiento">
+      <div class="contenedor">
+        <h2>Seguimiento de tickets</h2>
+        <p class="intro">Filtrá por estado y abrí cada ticket para ver el detalle. Los tickets que envíes desde el formulario aparecen acá primero.</p>
+        <div class="filtros" id="filtros" role="group" aria-label="Filtrar tickets por estado">
+          <button class="filtro activo" type="button" data-estado="Todos" aria-pressed="true">Todos</button>
+          <button class="filtro" type="button" data-estado="Abierto" aria-pressed="false">Abierto</button>
+          <button class="filtro" type="button" data-estado="En Progreso" aria-pressed="false">En Progreso</button>
+          <button class="filtro" type="button" data-estado="Resuelto" aria-pressed="false">Resuelto</button>
+          <button class="filtro" type="button" data-estado="Cerrado" aria-pressed="false">Cerrado</button>
+        </div>
+        <ul class="lista-tickets" id="listaTickets"></ul>
+        <p class="vacio" id="vacio" hidden>No hay tickets con ese estado todavía.</p>
+        <button class="boton boton-chico" id="borrarMios" type="button" hidden>Borrar mis tickets</button>
+      </div>
+    </section>
+
+    <!-- CONTACTO: formulario con validación -->
+    <section class="seccion seccion-alt" id="contacto">
+      <div class="contenedor contacto-grid">
+        <div>
+          <h2>Abrí un ticket</h2>
+          <p class="intro">Completá el formulario y te asignamos un número de ticket al instante.</p>
+          <h3>Para que lo resolvamos más rápido</h3>
+          <ul class="consejos">
+            <li>Contá qué pasó y desde cuándo.</li>
+            <li>Indicá en qué aula, laboratorio u oficina ocurre.</li>
+            <li>Si aparece un mensaje de error, copiá el texto.</li>
+          </ul>
+        </div>
+
+        <form class="formulario" id="formTicket" novalidate>
+          <div class="campo">
+            <label for="nombre">Nombre y apellido</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="60">
+            <p class="error" id="error-nombre"></p>
+          </div>
+          <div class="campo">
+            <label for="dato">Correo electrónico o teléfono</label>
+            <input id="dato" name="dato" type="text" autocomplete="email" maxlength="60">
+            <p class="error" id="error-dato"></p>
+          </div>
+          <div class="fila-campos">
+            <div class="campo">
+              <label for="categoria">Categoría</label>
+              <select id="categoria" name="categoria">
+                <option value="">Elegí una categoría</option>
+                <option>Redes y conectividad</option>
+                <option>Cuentas y accesos</option>
+                <option>Equipos y periféricos</option>
+                <option>Programas y licencias</option>
+              </select>
+              <p class="error" id="error-categoria"></p>
+            </div>
+            <div class="campo">
+              <label for="prioridad">Prioridad</label>
+              <select id="prioridad" name="prioridad">
+                <option>Baja</option>
+                <option selected>Media</option>
+                <option>Alta</option>
+                <option>Crítica</option>
+              </select>
+              <p class="error" id="error-prioridad"></p>
+            </div>
+          </div>
+          <div class="campo">
+            <label for="mensaje">Consulta</label>
+            <textarea id="mensaje" name="mensaje" rows="5" maxlength="500"></textarea>
+            <p class="contador" id="contador">0 / 500</p>
+            <p class="error" id="error-mensaje"></p>
+          </div>
+          <button class="boton boton-primario" type="submit">Enviar ticket</button>
+          <p class="resultado" id="resultado" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie-grid">
+      <div>
+        <p class="pie-titulo">Mesa de Ayuda IFTS 18</p>
+        <p>Soporte técnico para estudiantes, docentes y personal.</p>
+      </div>
+      <div>
+        <p class="pie-titulo">Atención</p>
+        <p>Lunes a viernes, de 08:00 a 18:00 hs. Los pedidos fuera de horario se responden el siguiente día hábil.</p>
+      </div>
+      <nav aria-label="Enlaces del pie">
+        <p class="pie-titulo">Ir a</p>
+        <a href="#servicios">Servicios</a>
+        <a href="#prioridades">Prioridades</a>
+        <a href="#seguimiento">Seguimiento</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+    <p class="pie-legal">© 2026 IFTS 18. Trabajo Práctico Integrador de Desarrollo de Sistemas Web (Front-End), Hernan Machado.</p>
+  </footer>
+
+</body>
+</html>

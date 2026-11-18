@@ -1,0 +1,30 @@
+DECLARACIÓN DE USO DE INTELIGENCIA ARTIFICIAL
+Trabajo Práctico Integrador - Desarrollo de Sistemas Web (Front-End)
+Alumno: Hernan Machado
+Herramienta utilizada: ChatGPT, geminis calude 
+
+Uso realizado:
+Utilicé la herramienta para consultar cómo funciona JavaScript y entender el
+manejo del DOM (selección de elementos, eventos y modificación de contenido).
+También la usé como apoyo para convertir un trabajo previo hecho con Flask
+(Python) en este TP de Front-End, manteniendo la integridad de los colores
+del diseño original y traduciendo la lógica de Python a JavaScript.
+
+Partes asistidas:
+- Explicación del funcionamiento del DOM y de los eventos en JavaScript.
+- Conversión de la lógica del backend en Flask a JavaScript del lado del
+  navegador (lista de tickets, filtros y validación del formulario).
+- Conservación de la paleta de colores del proyecto original en style.css.
+- Consultas sobre localStorage para guardar los tickets del usuario.
+
+Modificaciones propias:
+Adapté el código a mi estructura HTML, renombré clases e identificadores,
+reescribí los mensajes mostrados al usuario, ajusté los estilos y la paleta
+en style.css, y armé el formulario y la tabla de prioridades según el tema
+elegido (Mesa de Ayuda IFTS 18).
+
+Comprensión:
+Puedo explicar cómo se seleccionan los elementos del DOM con querySelector,
+cómo se escuchan eventos con addEventListener, cómo se valida cada campo del
+formulario con la función validarCampo, cómo se muestran los errores con
+mostrarError y cómo se guardan y leen los tickets con localStorage.
